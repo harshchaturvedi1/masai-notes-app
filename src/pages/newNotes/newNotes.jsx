@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import styles from "./newNotes.module.css"
 export const NewNotes = () => {
 
     const [title, setTitle] = useState("");
@@ -42,17 +43,17 @@ export const NewNotes = () => {
         setCurrentId(lastValue)
     }, [])
 
-    return <div>
-        <div>Add a new Note</div>
-        <div>
-            <div><input type="text" value={title} placeholder="title" onChange={(e) => setTitle(e.target.value)} /></div>
-            <div>
-                <textarea cols="30" rows="10" value={description} placeholder="description" onChange={(e) => setDescription(e.target.value)}></textarea>
+    return <div className={styles.mainWrapper}>
+        <div className={styles.pageTitle}>Add a new Note</div>
+        <div className={styles.notesWrapper}>
+            <div className={styles.title}><input type="text" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} /></div>
+            <div className={styles.desc}>
+                <textarea cols="30" rows="5" value={description} placeholder="Description" onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
-            <div><input type="date" value={date} placeholder="title" onChange={(e) => setDate(e.target.value)} /></div>
+            <div className={styles.date}><input type="date" value={date} placeholder="title" onChange={(e) => setDate(e.target.value)} /></div>
 
         </div>
-        <div>
+        <div className={styles.allButton}>
             <button onClick={handleSubmit}>Add</button>
             <button onClick={onDiscard}>Discard</button>
 

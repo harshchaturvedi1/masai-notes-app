@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import styles from "./bookmarked.module.css"
 export const BookMarkedNotes=()=>{
 
     const [allnotes, setAllNotes] = useState([])
@@ -46,27 +46,27 @@ export const BookMarkedNotes=()=>{
     }, [])
 
     return <>
-    <h3>All you bookmarked</h3>
+    <div className={styles.allNotes}>All you bookmarked</div>
     {
             allnotes.length > 0 ? (<div>
 
                 {
                     allnotes.map(ele => (
-                      ele.bookmark &&  <div key={ele?.id}>
-                            <div>
+                      ele.bookmark &&  <div key={ele?.id} className={styles.notesWrapper}>
+                            <div className={styles.notesmain}>
 
                                 <div>{ele?.title}</div>
                                 <div>{ele?.description}</div>
                                 <div>{ele?.date}</div>
                             </div>
-                            <div>
-                                <button onClick={() => handleDelete(ele.id)}>Delete</button>
+                            <div className={styles.notesButton}>
+                                <button className={styles.redColor} onClick={() => handleDelete(ele.id)}>Delete</button>
                                 <button onClick={() => handleBookmark(ele.id)}>Remove Bookmark</button>
                             </div>
                         </div>
                     ))
                 }
-            </div>) : <div>No item found!</div>
+            </div>) : <div className={styles.notFound}>No item found!</div>
         }
     </>
 }

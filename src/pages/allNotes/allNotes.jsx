@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./allNotes.module.css"
+
 export const AllNotes = () => {
 
     const [allnotes, setAllNotes] = useState([])
@@ -42,27 +43,27 @@ export const AllNotes = () => {
     }
 
     return <div>
-        <div>All Notes</div>
+        <div className={styles.allNotes}>All Notes</div>
         {
             allnotes.length > 0 ? (<div>
 
                 {
                     allnotes.map(ele => (
-                        <div key={ele?.id}>
-                            <div>
+                        <div key={ele?.id} className={styles.notesWrapper}>
+                            <div className={styles.notesmain}>
 
                                 <div>{ele?.title}</div>
                                 <div>{ele?.description}</div>
                                 <div>{ele?.date}</div>
                             </div>
-                            <div>
-                                <button onClick={() => handleDelete(ele.id)}>Delete</button>
-                                <button onClick={() => handleBookmark(ele.id)}>Bookmark</button>
+                            <div className={styles.notesButton}>
+                                <button onClick={() => handleDelete(ele.id)} className={styles.redColor}>Delete</button>
+                                <button onClick={() => handleBookmark(ele.id)} className={styles.greyColor}>Bookmark</button>
                             </div>
                         </div>
                     ))
                 }
-            </div>) : <div>No item found!</div>
+            </div>) : <div className={styles.notFound}> No item found!</div>
         }
     </div>
 }
