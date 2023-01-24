@@ -20,6 +20,7 @@
 .date > input{
 padding: 4px 6px;
 margin-bottom: 20px;
+outline: none;
 }
 .allButton{
     display: flex;
@@ -28,4 +29,11 @@ margin-bottom: 20px;
 .allButton > button{
     padding: 4px 12px;
     cursor: pointer;
+}
+input{
+    outline: none;
+}
+
+textarea{
+    outline: none;
 }
